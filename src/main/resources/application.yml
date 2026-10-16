@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: webhook-delivery
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/webhooks}
+    username: ${DATABASE_USER:postgres}
+    password: ${DATABASE_PASSWORD:postgres}
+    hikari:
+      maximum-pool-size: 20
+  threads:
+    virtual:
+      enabled: true
+server:
+  shutdown: graceful
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+webhooks:
+  dispatcher-enabled: true
